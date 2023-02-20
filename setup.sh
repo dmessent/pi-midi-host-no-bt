@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+set -x # echo on
+
 # Prepare system
 sudo apt-get update -y
 sudo apt-get upgrade -y
