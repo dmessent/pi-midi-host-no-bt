@@ -1,13 +1,5 @@
 #!/usr/bin/bash
 
-# Set new user password
-# echo "First, let's set a new password for better security!"
-# passwd
-
-# Enable SSH
-# sudo systemctl enable ssh
-# sudo systemctl start ssh
-
 # Prepare system
 sudo apt-get update -y
 sudo apt-get upgrade -y
@@ -17,14 +9,6 @@ sudo apt-get install git ruby -y
 git clone https://github.com/dmessent/pi-midi-host-no-bt
 cd pi-midi-host-no-bt
 
-# Optimize for power efficiency and fast boot
-# sudo cp config.txt /boot/
-# sudo cp cmdline.txt /boot/
-
-# Make device identifiable more easily on the network
-sudo apt-get install avahi-daemon -y
-sudo sed -i -- 's/raspberrypi/midihub/g' /etc/hostname /etc/hosts
-sudo hostname midihub
 
 # Install MIDI autoconnect script
 sudo cp connectall.rb /usr/local/bin/
@@ -39,7 +23,7 @@ sudo systemctl start midi.service
 # FW for older Midisport devices
 sudo apt-get install midisport-firmware -y
 
-# Setup MIDI bluetooth
+# Uncomment to set up MIDI bluetooth (untested)
 # git clone https://github.com/oxesoft/bluez
 # sudo apt-get install -y autotools-dev libtool autoconf
 # sudo apt-get install -y libasound2-dev
@@ -68,14 +52,14 @@ echo >> ~/.bashrc
 echo "alias connect='connectall.rb'" >> ~/.bashrc
 echo >> ~/.bashrc
 
-# Make FS read-only to avoid SD card corruption
+# Uncomment to make FS read-only to avoid SD card corruption, then reboot (untested)
 # git clone https://gitlab.com/larsfp/rpi-readonly
 # cd rpi-readonly
 # sudo ./setup.sh -y
 # cd ..
 
-# Turn on read-only mode
-# Use command "rw" to enable writes again
+# # Turn on read-only mode
+# # Use command "rw" to enable writes again
 # ro
 
 # echo "The system will now reboot in read-only mode."
